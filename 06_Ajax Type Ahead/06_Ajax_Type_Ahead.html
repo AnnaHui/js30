@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+    <form class="search-form">
+        <input type="text" class="search" placeholder="City or State">
+        <ul class="suggestions">
+            <li>Filter for a city</li>
+            <li>or a state</li>
+        </ul>
+    </form>
+    <script>
+        const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+        const cities = [];
+
+
+        fetch(endpoint)
+            .then(e => e.json())
+            .then(data => cities.push(...data));
+
+        function matches(word, cities) {
+            return cities.filter(event => {
+                const regex = new RegExp(word, 'gi');
+                return event.city.match(regex) || event.state.match(regex)
+            })
+        };
+
+        //在str中匹配任意一个字母的结束的地方，如果这个地方的前面是有三个数字(\d{3})则将该处匹配的空白替换为"," => 化為千分位
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        function displayMatches() {
+            const matchArray = matches(this.value, cities);
+            const html = matchArray.map(event => {
+                const regex = new RegExp(this.value, 'gi');
+                const cityname = event.city.replace(regex, `<span class="hl">${this.value}</span>`);
+                const statename = event.state.replace(regex, `<span class="hl">${this.value}</span>`);
+                return `
+                    <li>
+                        <span class='name'>${cityname}, ${statename}</span>
+                        <span class='population'>${numberWithCommas(event.population)}</span>
+                    </li>
+                `
+            }).join('');
+            suggestions.innerHTML = html
+        };
+
+        const searchInputs = document.querySelector('.search');
+        const suggestions = document.querySelector('.suggestions');
+
+        searchInputs.addEventListener('change', displayMatches);
+        searchInputs.addEventListener('keyup', displayMatches);
+    </script>
+</body>
+
+</html>

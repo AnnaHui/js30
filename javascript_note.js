@@ -30,32 +30,50 @@
 // Array.prototype.toLocaleString()
 // Array.prototype.entries()
 // Array.prototype.every() // return true or false
-// Array.prototype.filter()
+// Array.prototype.filter(elem, index, array)
+// Array.prototype.find(elem, index, array) //find value
+// Array.prototype.findIndex() //find index
+// Array.prototype.forEach(currentValue, index, array);
 
 
 
-var fruits = ['apple', 'banana', 'grapes', 'mango', 'orange'];
 
-// function filterItems(item) {
-//     return fruits.filter(function (el) {
-//         return el.toLowerCase().indexOf(item.toLowerCase()) > -1;
-//     })   
+var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+var result = [];
+
+var arr = array.forEach((elem, index) => {
+    if (array.indexOf(elem) === index) {
+        result.push(elem)
+    }
+});
+
+console.log(result)
+
+// var result = [];
+// var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+
+// var arr = array.find((elem, index, array) => array.indexOf(elem) === index); //return the first match elem
+// var arr = array.filter((elem, index, array) => array.indexOf(elem) === index );
+// var arr = Array.from( new Set(array) )
+
+// console.log(arr)
+
+
+// var fruits = ['apple', 'banana', 'grapes', 'mango', 'orange'];
+
+// // function filterItems(item) {
+// //     return fruits.filter(function (el) {
+// //         return el.toLowerCase().indexOf(item.toLowerCase()) > -1;
+// //     })   
+// // }
+// const filterItems = (item) => {
+//     return fruits.filter((el) =>
+//         el.toLowerCase().indexOf(item.toLowerCase()) > -1
+//     )
 // }
-const filterItems = (item) => {
-    return fruits.filter((el) =>
-        el.toLowerCase().indexOf(item.toLowerCase()) > -1
-    )
-}
 
 
-console.log(filterItems("app"))
-
-
-
-
-
-
-
+// console.log(filterItems("app"))
 
 // var arr = [
 //   { id: 15 },
@@ -86,39 +104,12 @@ console.log(filterItems("app"))
 
 
 
-
-
-
 // var a = ['a', 'b', 'c'];
 // var iterator = a.entries();
 
 // for (let e of iterator) {
 //     console.log(e)
 // }
-
-
-
-// var result = [];
-// var array = ['a', 'b', 'a', 'c', 'a', 'd'];
-// var elem = 'a';
-// var idx = array.indexOf(elem);
-
-
-
-// for (var i = 0; i < array.length; i++) {
-//     var arr1 = array[i];
-//     for (var j = 0; j < array.length; j++) {
-//         var arr2 = array[j];
-//     }
-// }
-
-// console.log(result)
-// while ( idx !== -1 ) {
-//     result.push(idx);
-
-//     // idx = (idx > 0 ? array.lastIndexOf(elem, idx - 1) : -1) ;
-// };
-
 
 
 

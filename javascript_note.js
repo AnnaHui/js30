@@ -34,20 +34,129 @@
 // Array.prototype.find(elem, index, array) //find value
 // Array.prototype.findIndex() //find index
 // Array.prototype.forEach(currentValue, index, array);
+// Array.prototype.keys() //return index
 
 
-
-
-var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+var array = ['a', 'k', 'a', 'c', 'a', 'd','z', 'k'];
 var result = [];
 
-var arr = array.forEach((elem, index) => {
-    if (array.indexOf(elem) === index) {
-        result.push(elem)
-    }
-});
+var arr = array.forEach((elem) => {
+//   console.log(result[elem])
+  !result[elem] && (result[elem] = false);
+  console.log(result[elem])
+})
 
-console.log(result)
+
+// console.log(Object.keys(result))
+
+// var words = [1, 2, 3, 4, 5, 6];
+// words.forEach((word) => {
+//     console.log(word);
+//     word === 1 && words.shift(); //刪除if中的下一個值
+// })
+
+// console.log(words)
+
+// function copy(obj) {
+//     var copy = Object.create(Object.getPrototypeOf(obj));
+//     var propNames = Object.getOwnPropertyNames(obj);
+
+//     propNames.forEach(function (name) {
+//         var desc = Object.getOwnPropertyDescriptor(obj, name);
+//         Object.defineProperty(copy, name, desc)
+//     })
+
+//     return copy
+// }
+
+// var obj1 = { a: 1, b: 2};
+
+// var obj2 = copy(obj1);
+
+// console.log(obj2)
+
+// function counter() {
+//     this.sum = 0;
+//     this.count = 0;
+// }
+
+// // counter.prototype.add = function (array) {
+// //     array.forEach(function(entry) {
+// //         this.sum += entry;
+// //         ++this.count
+// //     }, this);
+// // }
+
+// counter.prototype.add = function(array){
+//     array.forEach((entry) => {
+//         this.sum += entry;
+//         ++this.count
+//     })
+// }
+
+// var obj = new counter();
+// obj.add([2,5,9]);
+// console.log(obj.count);
+// console.log(obj.sum);
+
+// function c() {
+//     this.a = 37
+// }
+// var o = new c();
+// console.log(o.a);
+
+// function c2() {
+//     this.a = 37;
+//     return {
+//         a: 40
+//     }
+// }
+
+// o = new c2();
+// console.log(o.a)
+
+// fun
+// var o = {
+//     f: function () {
+//         return this.a + this.b;
+//     }
+// }
+
+// var p = Object.create(o);
+// p.a = 1;
+// p.b = 4;
+// console.log(p.f())
+
+// var o = {
+//     prop: 37,
+//     // f: function () {
+//     //     return this.prop;
+//     // }
+// }
+// function fFn() {
+//     return this.prop;
+// }
+// o.f = fFn;
+
+// o.b = {
+//     g: fFn,
+//     prop: 42
+// }
+
+// console.log(o.b.g())
+//this under Global context
+// this = window;
+
+// var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+// var result = [];
+
+// var arr = array.forEach((elem, index) => {
+//     if (array.indexOf(elem) === index) {
+//         result.push(elem)
+//     }
+// });
+
+// console.log(result)
 
 // var result = [];
 // var array = ['a', 'b', 'a', 'c', 'a', 'd'];

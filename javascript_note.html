@@ -10,6 +10,12 @@
 </head>
 
 <body>
+    <button onclick="alert(this.tagName.toLowerCase());">
+  Show this
+</button>
+<button onclick="alert((function() { return this; })());">
+  Show inner this
+</button>
     <p id="help">Helpful notes will appear here</p>
     <p>E-mail: <input type="text" id="email" name="email"></p>
     <p>Name: <input type="text" id="name" name="name"></p>

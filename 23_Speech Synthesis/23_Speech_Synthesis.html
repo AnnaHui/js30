@@ -46,7 +46,7 @@
             voices = this.getVoices();
             // console.log(voices);
             voicesDropdown.innerHTML = voices
-                .filter(voice => voice.lang.includes('en')) //filter lange中含有 en的選項
+                // .filter(voice => voice.lang.includes('en')) //filter lange中含有 en的選項
                 .map(voice => 
                    `<option value='${voice.name}'>${voice.name} (${voice.lang})</option>`
                 ).join('');
